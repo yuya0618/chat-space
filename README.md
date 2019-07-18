@@ -37,5 +37,5 @@
 |group_id|interger|null: false, foreign_key: true|
 |user_id|interger|null: false, foreign_key: true
 ## Association
-- belongs_to :users
+- belongs_to :user
 - belongs_to :group
