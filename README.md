@@ -5,9 +5,9 @@
 |email|string|null: false, unique: true|
 |password|string|null: false|
 ## Association
-- has many :messages
-- has many :users_groups
-- has many :groups, through: :users_groups
+- has_many :messages
+- has_many :users_groups
+- has_many :groups, through: :users_groups
 
 
 # groupsテーブル
@@ -15,9 +15,9 @@
 |------|----|-------|
 |name|string|null: false, unique: true|
 ## Association
-- has many :messages
-- has many :users_groups
-- has many :users, through: :users_groups
+- has_many :messages
+- has_many :users_groups
+- has_many :users, through: :users_groups
 
 
 # membersテーブル(userテーブルとgroupテーブルの中間テーブル)
