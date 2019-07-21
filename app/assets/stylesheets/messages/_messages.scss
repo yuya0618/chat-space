@@ -4,42 +4,32 @@ $color-white: #FFFFFF;
   width:100vw;
   height: 100vh;
 
-  .header{
-    background-color: #38aef0;
-    text-align: center;
-    color:$color-white;
-  }
-
-  .side-chat{
+  .side-bar{
     float: left;
     height: 100%;
     width: 300px;
     color: $color-white;
-    .side-top{
+    .header{
       font-weight: bold;
       height: 100px;
       background-color: #253141;
       display: flex;
       padding: 0 20px;
       align-items: center;
-      &__user{
+      &__name{
         display: flex;
         justify-content: space-between;
         width: 100%;
-        &__name{
-          font-size: 16px;
-        }
-        &__info{
-          display: flex;
-          &__left{
-            color: $color-white;
-          }
-          &__right{
-            color: $color-white;
-          }
+        font-size: 16px;
+      }
+      &__lists{
+        display: flex;
+        .icon{
+          color: $color-white;
         }
       }
     }
+  }
 
     .groups{
       height: calc(100vh - 100px);
@@ -52,13 +42,17 @@ $color-white: #FFFFFF;
         &__name{
           font-size: 15px;
           margin-bottom: 5px;
+          color: $white;
+          text-decoration: none;
         }
-        &__comment{
+        &__message{
+          text-decoration: none;
+          color: $white;
           font-size: 11px;
         }
       }
     }
-  }
+}
 
   .main-chat{
     width: calc(100vw - 300px);
@@ -173,4 +167,3 @@ $color-white: #FFFFFF;
       }
     }
   }
-}
