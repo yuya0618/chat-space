@@ -1,5 +1,5 @@
 .chat-page
-  = render 'devise/shared/side_bar'
+  = render 'shared/side_bar'
 
   .main-chat
     .main-top
@@ -10,21 +10,15 @@
           %li.main-top__left__member-list yuya
       =link_to "#", class: "main-top__right" do
         .main-top__right__edit Edit
-    .main-box
-      .group-chat
-        .main-box-info
-          %p.main-box-info__name yuya
-          %p.main-box-info__date 2019/07.19(Fri) 15:00:00
-        %ul.main-box__comment hello!!
-        .group-chat
-        .main-box-info
-          %p.main-box-info__name test
-          %p.main-box-info__date 2019/07.20(Stu) 14:14:30
-        %ul.main-box__comment thank you
-    .main-form
-      .main-form-box
-        %input(type="text" class="main-form-box__text" value="type a message")
-          %label(class="main-form-box__text__pic")
-            <i class="fa fa-image"></i>
-            %input(type="file" class="main-form-box__text__pic__file")
-      %input(type="submit" class="main-form__button" value="Send")
+
+    .messages
+      = render @messages
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
