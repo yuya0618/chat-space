@@ -35,7 +35,7 @@ $(function(){
       var speed = 200
       $('.messages').append(html);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},speed,"swing");
-      $('#message_content').val('');
+      $('#message_content')[0].reset();
     })
     .fail(function(){
       alert('エラー');
