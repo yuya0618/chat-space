@@ -98,6 +98,7 @@ $color-white: #FFFFFF;
       box-sizing: border-box;
       padding: 46px 40px 0;
       height: calc(100% - 100px - 90px);
+      overflow: scroll;
       .message {
         .upper-message {
           display: flex;
