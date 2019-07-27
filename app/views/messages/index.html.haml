@@ -4,12 +4,14 @@
   .main-chat
     .main-top
       .main-top__left
-        %p.main-top__left__name yuyateam
+        %p.main-top__left__name
+          = @group.name
         %ul.main-top__left__member
           Member :
-          %li.main-top__left__member-list yuya
-      =link_to "#", class: "main-top__right" do
-        .main-top__right__edit Edit
+          %li.main-top__left__member-list
+            - @group.users.each do |member|
+              = member.name
+      =link_to "Edit", edit_group_path(@group), class: 'main-top__right__edit'
 
     .messages
       = render @messages
