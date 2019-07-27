@@ -10,7 +10,7 @@
           Member :
           %li.main-top__left__member-list
             - @group.users.each do |member|
-              #{member.name}
+              = member.name
       =link_to "Edit", edit_group_path(@group), class: 'main-top__right__edit'
 
     .messages
