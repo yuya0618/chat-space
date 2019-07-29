@@ -1,8 +1,8 @@
 $(function(){
 
   function buildPost(message){
-    var addImage = (message.image) ? `<img class="lower-message__content__image" src="${message.image}">` : '';
-    var html = `<div class="message">
+    var addImage = (message.image)? `<img class="lower-message__content__image" src="${message.image}>`:"";
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -13,17 +13,19 @@ $(function(){
                   </div>
                     <div class="lower-message">
                       <p class="lower-message__content">
-                        ${message.text}<br/><br/>
-                        ${ addImage }
+                        ${message.content}
                       </p>
                     </div>
+                    ${addImage}
                 </div>`
     return html;
   };
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    $(".form__submit").removeAttr("disabled");
 
     $.ajax({
       url: url,
@@ -35,16 +37,37 @@ $(function(){
     })
     .done(function(message){
       var html = buildPost(message);
-      var speed = 200
       $('.messages').append(html);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},speed,"swing");
+      $('#new_message')[0].reset();
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast','swing');
     })
     .fail(function(){
       alert('エラー');
-    })
-    .always(function(){
-      $('.form__message') .val('');
-      $(".form__submit").removeAttr("disabled");
-      });
+    });
   })
-})
+
+  var reloadMessages = function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    last_message_id = $('.message:last').data('message-id');
+    var href =  'api/messages'
+    $.ajax({
+      url: href,
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function (messages) {
+      var insertHTML = '';
+      messages.forEach(function (message) {
+        insertHTML = buildPost(message);
+        $('.messages').append(insertHTML);
+      })
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    })
+    .fail(function () {
+      alert('自動更新に失敗しました');
+    });
+  }
+};
+  setInterval(reloadMessages, 5000);
+});
