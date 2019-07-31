@@ -1,13 +1,7 @@
 $(function(){
 
   function buildPost(message){
-    if(message.image !== null) {
-      var addImage = `<p class="lower-message__content">
-                      <img src=${message.image} alt="image" width="330" height="330">
-                  </p>`;
-    }else {
-      var addImage = ``;
-    }
+    var addImage = (message.image)? `<img class="lower-message__content__image" src="${message.image}>`:"";
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -21,8 +15,8 @@ $(function(){
                       <p class="lower-message__content">
                         ${message.content}
                       </p>
+                      ${addImage}
                     </div>
-                    ${addImage}
                 </div>`
     return html;
   };
