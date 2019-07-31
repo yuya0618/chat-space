@@ -1,7 +1,13 @@
 $(function(){
 
   function buildPost(message){
-    var addImage = (message.image)? `<img class="lower-message__content__image" src="${message.image}>`:"";
+    // var addImage = (message.image !== undefined)? `<img class="lower-message__content__image" src="${message.image.url}">`:"";
+    if (message.image === null){
+      var addImage = "";
+    }else{
+      var addImage = `<img class="lower-message__content__image" src="${message.image.url}">`;
+    }
+
     var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -66,6 +72,9 @@ $(function(){
     })
     .fail(function () {
       alert('自動更新に失敗しました');
+    })
+    .always(function(){
+      $(".form__submit").removeAttr("disabled");
     });
   }
 };
