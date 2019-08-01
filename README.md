@@ -29,7 +29,7 @@
 - belongs_to :user
 - belongs_to :group
 
-## messagesテーブル
+# messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text||
