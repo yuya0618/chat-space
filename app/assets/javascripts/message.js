@@ -1,5 +1,4 @@
 $(function(){
-
   function buildPost(message){
     // var addImage = (message.image !== undefined)? `<img class="lower-message__content__image" src="${message.image.url}">`:"";
     if (message.image.url === null){
