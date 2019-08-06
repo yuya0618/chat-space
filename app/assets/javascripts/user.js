@@ -10,7 +10,6 @@ function appendUser(user){
               </div>`;
   $('#user-search-result').append(html);
 }
-
 function notUser() {
   var html = `<div class="chat-group-user">
                 <p class="chat-group-user__name">
