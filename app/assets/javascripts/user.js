@@ -18,7 +18,6 @@ function notUser() {
               </div>`;
   $('#user-search-result').append(html);
 }
-
 function appendMembers(user_name, user_id) {
   var html = `<div class="chat-group-user">
                 <input type = "hidden", value = ${ user_id }, name = "group[user_ids][]", id ="group_user_ids_${user_id}">
