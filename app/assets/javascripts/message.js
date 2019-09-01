@@ -2,7 +2,7 @@ $(function(){
 
   function buildPost(message){
     // var addImage = (message.image !== undefined)? `<img class="lower-message__content__image" src="${message.image.url}">`:"";
-    if (message.image === null){
+    if (message.image.url === null){
       var addImage = "";
     }else{
       var addImage = `<img class="lower-message__content__image" src="${message.image.url}">`;
