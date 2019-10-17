@@ -57,7 +57,6 @@ $(function(){
     });
   });
 });
-
 $(function(){
   $('#user-search-result').on("click", ".chat-group-user__btn--add",function(){
     var user_name = $(this).data('name');
