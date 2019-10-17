@@ -31,7 +31,6 @@ function appendMembers(user_name, user_id) {
               </div>`;
   $('#chat-group-users').append(html);
 }
-
 $(function(){
   $(".chat-group-form").on("input", function() {
     $('#user-search-result').children().remove();
